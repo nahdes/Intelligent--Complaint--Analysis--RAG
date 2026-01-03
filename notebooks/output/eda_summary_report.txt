@@ -1,0 +1,47 @@
+
+======================================================================
+EDA AND PREPROCESSING SUMMARY REPORT
+CrediTrust Financial - Complaint Analysis System
+======================================================================
+1. DATASET OVERVIEW
+   • Complaints with target products: 480,050
+   • Date range: 2015-03-19 00:00:00 to 2025-06-15 00:00:00
+2. TARGET PRODUCTS (5 Products)
+   • Credit card
+   • Credit card or prepaid card
+   • Student loan
+   • Checking or savings account
+   • Money transfer, virtual currency, or money service
+3. PRODUCT DISTRIBUTION
+ • Checking or savings account: 140,319 (29.2%)
+ • Credit card or prepaid card: 108,667 (22.6%)
+ • Money transfer, virtual currency, or money service: 97,188 (20.2%)
+ • Credit card: 80,667 (16.8%)
+ • Student loan: 53,209 (11.1%)
+
+4. NARRATIVE ANALYSIS
+   • Complaints WITH narratives: 480,050 (100% — filtered)
+   • Average length: 207 words
+   • Median length: 139 words
+   • Very short (<10 words): 2,072
+   • Very long (>1000 words): 5,691
+5. TEXT PREPROCESSING APPLIED
+   • Lowercasing: ✓
+   • Boilerplate removal: ✓
+   • Special character cleaning: ✓
+   • Whitespace normalization: ✓
+   • Average text reduction: 4.68%
+6. OUTPUT FILES GENERATED
+   • data/filtered_complaints.csv
+   • output/product_distribution.png
+   • output/narrative_analysis.png
+   • output/eda_summary_report.txt
+7. NEXT STEPS (Task 2)
+   • Chunk cleaned narratives
+   • Generate embeddings
+   • Store in FAISS vector DB
+   • Estimated chunks: ~1,440,150
+======================================================================
+END OF REPORT
+======================================================================
+        
