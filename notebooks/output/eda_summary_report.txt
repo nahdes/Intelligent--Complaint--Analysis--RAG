@@ -45,3 +45,49 @@ CrediTrust Financial - Complaint Analysis System
 END OF REPORT
 ======================================================================
         
+======================================================================
+TASK 2: TEXT CHUNKING, EMBEDDING & VECTOR INDEXING
+======================================================================
+1. SAMPLING STRATEGY
+   • Sample size: 12,000 complaints (within 10k–15k range)
+   • Method: Stratified sampling by 'Product' to ensure proportional representation
+   • Goal: Maintain original product distribution while reducing compute load
+   • Verification: Sample distribution matches population within ±2%
+
+2. TEXT CHUNKING STRATEGY
+   • Library: LangChain's RecursiveCharacterTextSplitter
+   • Chunk size: 300 characters
+   • Chunk overlap: 50 characters
+   • Justification:
+     - Smaller chunks (≤300 chars) preserve semantic coherence for complaint narratives
+     - Overlap ensures context isn’t lost at sentence boundaries
+     - Tested sizes: 200, 300, 500 → 300 gave best balance of context & granularity
+     - Separators prioritize paragraph > sentence > word breaks
+
+3. EMBEDDING MODEL CHOICE
+   • Model: sentence-transformers/all-MiniLM-L6-v2
+   • Why chosen:
+     - Lightweight (22M params) but high quality for semantic similarity
+     - 384-dimensional embeddings → efficient storage & fast search
+     - Trained on diverse sentence-pair data (STS, NLI)
+     - Ideal for English complaint narratives (short-to-medium length)
+     - Widely used in production RAG systems (good community support)
+
+4. VECTOR STORE & METADATA
+   • Engine: FAISS (Facebook AI Similarity Search)
+   • Index type: Flat L2 (exact search; sufficient for ~50k chunks)
+   • Metadata stored per chunk:
+     - complaint_id: Original CFPB ID
+     - product: Financial product category
+     - chunk_index: Position within original narrative
+     - original_word_count: For context
+     - chunk_word_count: For filtering
+   • Total chunks indexed: 62,468
+   • Final index size: ~91.5 MB (estimated)
+
+5. NEXT STEPS
+   • Implement retrieval with metadata filtering (e.g., "only credit card complaints")
+   • Evaluate retrieval quality using relevance judgments
+   • Consider HNSW index for faster approximate search if scale increases
+======================================================================
+        
