@@ -1,3 +1,4 @@
+*.bin filter=lfs diff=lfs merge=lfs -text
 notebooks/vector_store/chroma.sqlite3 filter=lfs diff=lfs merge=lfs -text
 vector_store/faiss_index.bin filter=lfs diff=lfs merge=lfs -text
 notebooks/vector_store/**/data_level0.bin filter=lfs diff=lfs merge=lfs -text
