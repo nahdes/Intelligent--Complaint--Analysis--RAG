@@ -10,25 +10,22 @@
 - **Frontend**: Streamlit
 - **Evaluation**: Qualitative RAG assessment (Markdown report)
 
----
-
 ## 📂 Project Structure
 
-.
+```text
+creditrust-rag/
 ├── vector_store/
-│ ├── faiss_index.bin # Original FAISS index (Task 2)
-│ └── metadata.json # Complaint text + metadata
+│   ├── faiss_index.bin      # Original FAISS index (from Task 2)
+│   └── metadata.json        # Full complaint texts + metadata (e.g., product, issue)
 │
 ├── notebooks/
-│ └── vector_store/ # Persisted Chroma DB
+│   └── vector_store/        # Persistent Chroma DB directory (auto-created)
 │
-├── RAG.py # FAISS→Chroma + RAG + Evaluation
-├── streamlit_app.py # Streamlit chatbot interface
-├── evaluation_report.md # Generated qualitative evaluation
-├── requirements.txt
-└── README.md
-
----
+├── RAG.py                   # Main logic: FAISS→Chroma conversion, RAG pipeline, evaluation
+├── streamlit_app.py         # Streamlit chatbot UI
+├── evaluation_report.md     # Auto-generated qualitative evaluation report
+├── requirements.txt         # Python dependencies
+└── README.md                # This file
 
 ## 🔁 FAISS → Chroma Conversion
 
@@ -196,4 +193,5 @@ Multi-document answer citations
 Authentication & role-based access
 
 Cloud deployment (Docker + VPS)
+
 
